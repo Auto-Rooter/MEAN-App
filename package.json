@@ -19,7 +19,9 @@
   "homepage": "https://github.com/Auto-Rooter/MEAN-App#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.9",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12",
     "prettier": "^2.3.2"
   },
   "devDependencies": {}
