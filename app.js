@@ -5,11 +5,10 @@ const api = process.env.API_URL;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 
+
 //Middleware
 app.use(express.json());
 app.use(morgan('tiny'));
-
-
 
 app.get(`${api}/products`, (req, res) => {
     const products = {
