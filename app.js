@@ -6,16 +6,20 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 
-const productsRouter = require('./routers/products')
-
+const productsRouters = require('./routers/products')
+const categoriesRoutes = require('./routers/products')
+const usersRoutes = require('./routers/products')
+const ordersRoutes = require('./routers/products')
 
 //Middleware
 app.use(express.json());
 app.use(morgan('tiny'));
 
 //Routers
-app.use(`${api}/products`, productsRouter)
-
+app.use(`${api}/products`, productsRouters);
+app.use(`${api}/categories`, categoriesRoutes);
+app.use(`${api}/users`, usersRoutes);
+app.use(`${api}/orders`, ordersRoutes);
 
 // mongoose.connect() : return a promise which will return two methods (onSuccess, onFail)
 mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true}).then(() =>{
@@ -23,6 +27,7 @@ mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true}).then(()
 }).catch((err)=> {
     console.log(`[!] Faild to connect to MongoDB: ${err}`);
 });
+
 
 
 app.listen(3000, () => {
