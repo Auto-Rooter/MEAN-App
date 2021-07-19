@@ -6,24 +6,16 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 
+const productsRouter = require('./routers/products')
+
+
 //Middleware
 app.use(express.json());
 app.use(morgan('tiny'));
 
-app.get(`${api}/products`, (req, res) => {
-    const products = {
-        id: 1,
-        name: 'hair dresser',
-        image: 'some_url'
-    }
-    res.send(products);
-})
+//Routers
+app.use(`${api}/products`, productsRouter)
 
-app.post(`${api}/products`, (req, res) => {
-    const newProducts = req.body;
-    console.log("New Product: " + JSON.stringify(newProducts)); 
-    res.send(newProducts);
-})
 
 // mongoose.connect() : return a promise which will return two methods (onSuccess, onFail)
 mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true}).then(() =>{
@@ -31,6 +23,7 @@ mongoose.connect(process.env.CONNECTION_STRING, {useNewUrlParser: true}).then(()
 }).catch((err)=> {
     console.log(`[!] Faild to connect to MongoDB: ${err}`);
 });
+
 
 app.listen(3000, () => {
     console.log("API: " + api);
