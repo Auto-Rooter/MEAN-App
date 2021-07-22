@@ -4,12 +4,15 @@ require('dotenv/config');
 const api = process.env.API_URL;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-
+const cors = require('cors');
 
 const productsRouters = require('./routers/products')
 const categoriesRoutes = require('./routers/products')
 const usersRoutes = require('./routers/products')
 const ordersRoutes = require('./routers/products')
+
+app.use(cors())
+app.options('*', cors())
 
 //Middleware
 app.use(express.json());
