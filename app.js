@@ -7,9 +7,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const productsRouters = require('./routers/products')
-const categoriesRoutes = require('./routers/products')
-const usersRoutes = require('./routers/products')
-const ordersRoutes = require('./routers/products')
+const categoriesRoutes = require('./routers/categories')
+const usersRoutes = require('./routers/users')
+const ordersRoutes = require('./routers/orders')
 
 app.use(cors())
 app.options('*', cors())
